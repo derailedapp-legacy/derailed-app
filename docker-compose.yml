@@ -1,0 +1,9 @@
+services:
+  api:
+    container_name: derailed-app
+    restart: unless-stopped
+    ports:
+      - "8080:8080"
+    build:
+      context: .
+      dockerfile: Dockerfile
