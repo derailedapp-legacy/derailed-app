@@ -83,7 +83,7 @@ exports.default = {
             },
           }
         : undefined,
-      runtimeChunk: { name: "rtxc" },
+      runtimeChunk: 'single',
       minimize: isEnvProduction,
     },
     entry: './src/main.tsx',
@@ -135,6 +135,16 @@ exports.default = {
             ...(isEnvProduction && {
               minify: "auto",
             }),
+            templateParameters: (compilation, assets, tags, options) => {
+              tags.headTags.forEach((tag) => {
+                  if (tag.tagName === 'script') {
+                      tag.attributes.async = true;
+                  }
+              });
+              return {
+                   htmlWebpackPlugin: { options }
+              }
+           },
           }),
       !isEnvProduction && new ReactRefreshWebpackPlugin(),
     ].filter(Boolean),
