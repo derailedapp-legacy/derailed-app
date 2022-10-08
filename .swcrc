@@ -1,0 +1,16 @@
+{
+    "test": ".tsx?$",
+    "jsc": {
+      "parser": {
+        "syntax": "typescript",
+        "tsx": true,
+        "decorators": false,
+        "dynamicImport": true
+      },
+      "transform": {
+        "react": {
+          "refresh": true
+        }
+      }
+    }
+}
