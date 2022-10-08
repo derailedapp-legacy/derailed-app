@@ -5,7 +5,7 @@
   "private": true,
   "scripts": {
     "dev": "webpack serve",
-    "start": "yarn build && sirv dist",
+    "start": "yarn build && sirv dist --host",
     "build": "webpack --mode production"
   },
   "dependencies": {
