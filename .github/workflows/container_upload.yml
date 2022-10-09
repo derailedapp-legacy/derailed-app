@@ -11,7 +11,7 @@ name: Update Container
 
 on:
   push:
-    branches: ['master']
+    branches: ["master"]
 
 env:
   REGISTRY: ghcr.io
