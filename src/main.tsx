@@ -1,10 +1,11 @@
-import React from 'react'
+import React, {Suspense} from 'react'
 import {
   createBrowserRouter,
   RouterProvider,
 } from 'react-router-dom'
-import Home from './pages/Home'
 import './style.css';
+
+let Home = React.lazy(() => import('./pages/Home'))
 
 let router = createBrowserRouter([
   {
@@ -15,6 +16,8 @@ let router = createBrowserRouter([
 
 import('react-dom/client').then(ReactDOM => { ReactDOM.createRoot(document.getElementById('app-mount') as HTMLElement).render(
   <React.StrictMode>
-    <RouterProvider router={router} />
+    <Suspense fallback={<div>Sorry for the interruption.. we're trying to load content.</div>}>
+      <RouterProvider router={router} />
+    </Suspense>
   </React.StrictMode>
 )})
