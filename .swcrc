@@ -1,16 +1,16 @@
 {
     "test": ".tsx?$",
+    "minify": true,
     "jsc": {
+      "minify": {
+        "compress": true,
+        "mangle": true
+      },
       "parser": {
         "syntax": "typescript",
         "tsx": true,
         "decorators": false,
         "dynamicImport": true
-      },
-      "transform": {
-        "react": {
-          "refresh": true
-        }
       }
     }
 }

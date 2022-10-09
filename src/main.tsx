@@ -1,5 +1,4 @@
 import React from 'react'
-import ReactDOM from 'react-dom/client'
 import {
   createBrowserRouter,
   RouterProvider,
@@ -14,8 +13,8 @@ let router = createBrowserRouter([
   }
 ])
 
-ReactDOM.createRoot(document.getElementById('app-mount') as HTMLElement).render(
+import('react-dom/client').then(ReactDOM => { ReactDOM.createRoot(document.getElementById('app-mount') as HTMLElement).render(
   <React.StrictMode>
     <RouterProvider router={router} />
   </React.StrictMode>
-)
+)})

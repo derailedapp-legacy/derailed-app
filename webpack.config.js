@@ -36,8 +36,6 @@ function getSwcConfig() {
     }
   };
 
-let loader;
-
 let swcConfig = getSwcConfig();
 let isEnvProduction = process.env.PRODUCTION === 'true';
 let moduleFileExtensions = ["web.mjs","mjs","web.js","js","web.ts","ts","web.tsx","tsx","json","web.jsx", "jsx"];
@@ -56,7 +54,6 @@ if (!isEnvProduction) {
     },
     });
 }
-loader = ["swc-loader", swcConfig];
 
 exports.default = {
     devServer: {
@@ -84,7 +81,7 @@ exports.default = {
           }
         : undefined,
       runtimeChunk: 'single',
-      minimize: isEnvProduction,
+      minimize: true,
     },
     entry: './src/main.tsx',
     mode: isEnvProduction ? "production" : "development",
@@ -107,8 +104,8 @@ exports.default = {
           test: /\.(js|mjs|jsx|ts|tsx)$/,
           include: [resolveApp('')],
           exclude: /node_modules/,
-          loader: loader[0],
-          options: loader[1],
+          loader: "swc-loader",
+          options: swcConfig,
         },
         {
             test: /\.css$/i,
